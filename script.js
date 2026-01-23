@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Filtrado de productos
     const filterButtons = document.querySelectorAll('.filter-btn');
     const products = document.querySelectorAll('.product-item');
@@ -30,14 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const btn = form.querySelector('button');
             const feedback = form.nextElementSibling || document.getElementById('formFeedback');
-            
+
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Enviando...';
 
             setTimeout(() => {
                 form.classList.add('d-none');
-                if(feedback) feedback.classList.remove('hidden', 'd-none');
+                if (feedback) feedback.classList.remove('hidden', 'd-none');
             }, 1500);
         });
     });
+
+    window.onload = function () {
+        window.scrollTo(0, 0);
+    }
+
 });

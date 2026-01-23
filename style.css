@@ -102,6 +102,103 @@ h1, h2, h3, .logo {
     padding: 5rem 0;
 }
 
+/* =========================================
+   NUEVO: TARJETAS DE CATEGORÍA (Hover Effect)
+   ========================================= */
+
+/* Cuadrícula para las categorías principales */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0 4rem;
+}
+
+/* Contenedor de la tarjeta */
+.category-card {
+    position: relative;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden; /* Esencial para contener el zoom de la imagen */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    cursor: pointer;
+    text-decoration: none; /* Quitar subrayado del enlace */
+    display: block;
+}
+
+/* Imagen de fondo */
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Suavizado del zoom */
+}
+
+/* Superposición oscura (Overlay) */
+.category-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0; /* Invisible inicialmente */
+    transition: all 0.4s ease-in-out;
+    padding: 1rem;
+}
+
+/* Texto dentro del overlay */
+.category-overlay h3 {
+    color: var(--secondary-color); /* Color crema para contraste */
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+    transition: all 0.4s ease-in-out;
+}
+
+.category-overlay p {
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 300;
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+    transition: all 0.5s ease-in-out; /* Un poco más lento que el título */
+}
+
+/* --- ANIMACIONES HOVER --- */
+
+/* Al pasar el ratón sobre la tarjeta: */
+
+/* 1. Zoom en la imagen */
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+/* 2. Aparece el overlay */
+.category-card:hover .category-overlay {
+    opacity: 1;
+}
+
+/* 3. El texto se desliza hacia arriba y se hace visible */
+.category-card:hover .category-overlay h3,
+.category-card:hover .category-overlay p {
+    transform: translateY(0);
+}
+
+/* Ajuste responsive para móviles */
+@media (max-width: 480px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    .category-card {
+        height: 250px;
+    }
+}
+
 footer {
     background-color: var(--text-dark);
     color: white;
