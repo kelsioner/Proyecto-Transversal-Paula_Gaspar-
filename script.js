@@ -1,48 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Filtrado de productos
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const products = document.querySelectorAll('.product-item');
-
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // UI
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            products.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    item.classList.add('animate-in'); // Podrías añadir animaciones CSS
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+    
+    // 1. GESTIÓN AUTOMÁTICA DE CLASE ACTIVE EN NAVBAR
+    // Detecta en qué página estamos y marca el link correspondiente
+    const currentPath = window.location.pathname.split("/").pop();
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href').split("/").pop();
+        if (currentPath === href) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
     });
 
-    // Validación y feedback de formularios
+    // 2. VALIDACIÓN Y FEEDBACK DE FORMULARIOS
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = form.querySelector('button');
+            const btn = form.querySelector('button[type="submit"]');
             const feedback = form.nextElementSibling || document.getElementById('formFeedback');
 
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Enviando...';
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Procesando...';
+            }
 
+            // Simulación de envío
             setTimeout(() => {
-                form.classList.add('d-none');
-                if (feedback) feedback.classList.remove('hidden', 'd-none');
+                form.style.display = 'none';
+                if (feedback) {
+                    feedback.classList.remove('d-none');
+                    feedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }, 1500);
         });
     });
 
-    window.onload = function () {
-        window.scrollTo(0, 0);
-    }
-
+    // 3. EFECTO DE SCROLL SUAVE PARA ENLACES INTERNOS
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 });
