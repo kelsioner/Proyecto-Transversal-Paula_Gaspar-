@@ -3,14 +3,14 @@
     --primary-color: #d4a373;
     --primary-dark: #bc8a5f;
     --secondary-color: #faedcd;
-    --bg-light: #debd9d;
+    --bg-light: #d3b08d;
     --footer-bg: #664c35;
     --gold-text: #dfb777;
     --text-dark: #333333;
     --white: #ffffff;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 2px 15px rgba(0,0,0,0.05);
-    --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+    --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* RESET & BASE */
@@ -21,11 +21,33 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
     font-family: 'Playfair Display', serif;
 }
 
 /* NAVBAR */
+
+/* Estilo para el logo dentro de la Navbar */
+.nav-logo {
+    max-height: 50px;
+    /* Ajusta este valor según prefieras el tamaño */
+    width: auto;
+    margin-right: 15px;
+    /* Esta es la separación que buscas */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Asegura que el contenedor del logo sea flexible */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .navbar {
     background-color: var(--white);
     box-shadow: var(--shadow-sm);
@@ -39,7 +61,9 @@ h1, h2, h3, .logo {
     color: var(--text-dark);
 }
 
-.logo span { color: var(--primary-color); }
+.logo span {
+    color: var(--primary-color);
+}
 
 .nav-link {
     font-weight: 500;
@@ -48,15 +72,16 @@ h1, h2, h3, .logo {
     transition: var(--transition);
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color) !important;
 }
 
 /* HERO SECTION */
 .hero {
-    height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), 
-                url('assests/ilustration.png') center/cover no-repeat;
+    height: 50vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
+        url('assests/ilustration.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,29 +104,109 @@ h1, h2, h3, .logo {
     box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
 }
 
-/* CARDS DE PRODUCTOS (VISTA CATEGORÍA) */
-.product-card {
+.btn-outline-secondary {
+    background-color: var(--footer-bg);
+    color: white !important;
+    border-radius: 50px;
+    padding: 0.8rem 2.5rem;
     border: none;
-    border-radius: 15px;
     transition: var(--transition);
-    background-color: var(--white);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--primary-dark);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* CARDS DE PRODUCTOS (VISTA CATEGORÍA) */
+/* --- EFECTO FLIP CARD (ROTACIÓN) PARA PRODUCTOS --- */
+.product-flip-card {
+    width: 100%;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Estado al pasar el ratón */
+.product-flip-card:hover .product-card-inner {
+    transform: rotateY(180deg);
+}
+
+.product-front,
+.product-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+/* CARA DELANTERA (Imagen y Nombre) */
+.product-front {
+    background-color: var(--white);
+    transform: rotateY(0deg);
 }
 
-.product-card img {
+.product-front img {
+    width: 100%;
     height: 250px;
     object-fit: cover;
 }
 
-.price {
-    color: var(--primary-color);
-    font-weight: 700;
+.product-front-info {
+    padding: 1rem;
+    text-align: center;
+}
+
+/* CARA TRASERA (Alérgenos e Info) */
+.product-back {
+    background-color: var(--bg-light);
+    color: var(--white);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.product-back h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--footer-bg);
+}
+
+.allergen-info {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.allergen-icons {
+    margin-top: 1rem;
     font-size: 1.2rem;
+    display: flex;
+    gap: 10px;
+    color: var(--secondary-color);
 }
 
 .catalog-header {
@@ -163,14 +268,45 @@ h1, h2, h3, .logo {
     transition-delay: 0.1s;
 }
 
-.category-card:hover img { transform: scale(1.1); }
-.category-card:hover .category-overlay { opacity: 1; }
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-card:hover .category-overlay {
+    opacity: 1;
+}
+
 .category-card:hover .category-overlay h3,
-.category-card:hover .category-overlay p { transform: translateY(0); }
+.category-card:hover .category-overlay p {
+    transform: translateY(0);
+}
+
+/* Evita que el icono de error se solape con el calendario nativo */
+input[type="date"].is-invalid {
+    /* Desplazamos el icono de Bootstrap (exclamación) a la izquierda del calendario */
+    background-position: right calc(0.375em + 1rem) center !important;
+    padding-right: calc(1.5em + 2.5rem) !important;
+}
+
+input[type="date"].is-valid {
+    /* Desplazamos el icono de Bootstrap (exclamación) a la izquierda del calendario */
+    background-position: right calc(0.375em + 1rem) center !important;
+    padding-right: calc(1.5em + 2.5rem) !important;
+}
+
+/* Estilo para los inputs de tipo tel */
+input[type="tel"].is-invalid,
+input[type="tel"].is-valid {
+    background-position: right calc(0.375em + 0.5rem) center !important;
+}
+
+.title {
+    text-align: center;
+}
 
 /* Footer Compacto */
 .footer {
-    background-color: var(--footer-bg) ;
+    background-color: var(--footer-bg);
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.8rem;
 }
@@ -198,21 +334,24 @@ h1, h2, h3, .logo {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    border-left: 1px solid rgba(255, 255, 255, 0.3); /* Línea blanca sutil */
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    /* Línea blanca sutil */
     padding-left: 15px;
 }
 
 .footer-socials a {
-    color: #ffffff !important; /* Fuerza el color blanco para quitar el azul */
+    color: #ffffff !important;
     font-size: 1.2rem;
     transition: var(--transition);
     line-height: 1;
-    text-decoration: none; /* Quita el subrayado si apareciera */
+    text-decoration: none;
 }
 
 .footer-socials a:hover {
-    color: #dfb777 !important; /* Color dorado al pasar el ratón */
-    transform: translateX(3px); /* Pequeño movimiento a la derecha */
+    color: #dfb777 !important;
+    /* Color dorado al pasar el ratón */
+    transform: translateX(3px);
+    /* Pequeño movimiento a la derecha */
 }
 
 .footer-kit img {
@@ -233,5 +372,16 @@ h1, h2, h3, .logo {
         justify-content: center;
         margin-top: 1rem;
     }
-    .hero h1 { font-size: 3rem; }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Ajustes para que el footer no se rompa en pantallas pequeñas */
+@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+        /* Centra todo el texto en móviles */
+    }
 }

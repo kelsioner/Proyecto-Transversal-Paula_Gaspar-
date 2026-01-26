@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tartas | Pastelería Lama</title>
+    <title>Bollería Artesana | Pastelería Lama</title>
     <link rel="icon" type="image/png" href="../assets/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
+            <img src="/assests/Logo Lama.png" alt="Pastelería Lama" class="nav-logo me-3">
             <a class="logo" href="../index.html">Pastelería <span>Lama</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -36,75 +35,194 @@
         <div class="container">
             <a href="/pages/products.html" class="btn btn-outline-secondary rounded-pill mb-3">← Volver al catálogo</a>
             <h1 class="display-4 fw-bold">Bollería Artesana</h1>
-            <p class="text-muted">Horneado diariamente en nuestro obrador.</p>
+            <p class="text-muted">Horneado diariamente en nuestro obrador con mantequilla de primera calidad.</p>
         </div>
     </header>
 
     <main class="container py-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" class="card-img-top">
-                    <h3>Croissant Clásico</h3>
-                    <p class="price">1,50€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=500" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Croissant Clásico</h3>
+                                <p class="price">1,50€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Hojaldre artesano con 24 horas de fermentación y mantequilla pura.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1600431562968-842c0450fa03?w=500" class="card-img-top">
-                    <h3>Napolitana Choco</h3>
-                    <p class="price">1,80€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="https://images.pexels.com/photos/8909323/pexels-photo-8909323.jpeg?_gl=1*1go3fqj*_ga*MTA0ODYzNjUyMC4xNzY5NDE2ODI1*_ga_8JE65Q40S6*czE3Njk0MTY4MjQkbzEkZzEkdDE3Njk0MTY4NjkkajE1JGwwJGgw" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Napolitana</h3>
+                                <p class="price">1,80€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Hojaldre crujiente relleno de crema de chocolate fundente al 50% cacao.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                                <i class="fas fa-seedling" title="Trazas de frutos secos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1616328300367-221752171b16?w=500" class="card-img-top">
-                    <h3>Palmera Azúcar</h3>
-                    <p class="price">2,10€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="https://www.meriendasdepasion.com/wp-content/uploads/2025/02/IMG_4173-scaled-e1740601591562.jpeg?v=1740044627" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Palmera Azúcar</h3>
+                                <p class="price">2,10€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Hojaldre caramelizado a mano con azúcar de caña, extra crujiente bañada con una suave capa de chocolate con leche.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1601808485434-c91d363541e4?w=500" class="card-img-top">
-                    <h3>Bollo Suizo</h3>
-                    <p class="price">1,30€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Caracola Crema</h3>
+                                <p class="price">1,75€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Espiral de hojaldre rellena de crema pastelera casera y pasas sultanas.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                                <i class="fas fa-egg" title="Huevo"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1587057448433-56c75bffc716?w=500" class="card-img-top">
-                    <h3>Caracola Crema</h3>
-                    <p class="price">1,75€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Berlina Rellena</h3>
+                                <p class="price">1,60€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Masa frita ligera rellena a elegir de chocolate o crema pastelera.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-egg" title="Huevo"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1626367818873-344b9035f44b?w=500" class="card-img-top">
-                    <h3>Berlina Rellena</h3>
-                    <p class="price">1,60€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Ensaimada</h3>
+                                <p class="price">1,50€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Masa fermentada tradicional con manteca de cerdo, muy ligera y aérea.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-egg" title="Huevo"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=500" class="card-img-top">
-                    <h3>Ensaimada</h3>
-                    <p class="price">1,50€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Muffin Choco</h3>
+                                <p class="price">1,95€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Magdalena extra jugosa con pepitas de chocolate negro y cacao puro.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-egg" title="Huevo"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1612185775974-c8130664a7fb?w=500" class="card-img-top">
-                    <h3>Muffin Choco</h3>
-                    <p class="price">1,95€</p>
+                <div class="product-flip-card">
+                    <div class="product-card-inner">
+                        <div class="product-front">
+                            <img src="" class="card-img-top">
+                            <div class="product-front-info">
+                                <h3>Trenza Almudevar</h3>
+                                <p class="price">9,50€</p>
+                            </div>
+                        </div>
+                        <div class="product-back">
+                            <h3>Ingredientes</h3>
+                            <p class="allergen-info">Pieza de bollería hojaldrada rellena de nueces, pasas y crema de almendras.</p>
+                            <div class="allergen-icons">
+                                <i class="fas fa-bread-slice" title="Gluten"></i>
+                                <i class="fas fa-seedling" title="Frutos de cáscara"></i>
+                                <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card product-card h-100 shadow-sm text-center"><img
-                        src="https://images.unsplash.com/photo-1599708153386-62df77ab616c?w=500" class="card-img-top">
-                    <h3>Trenza Almudevar</h3>
-                    <p class="price">9,50€</p>
-                </div>
-            </div>
+
         </div>
     </main>
 
@@ -113,33 +231,28 @@
             <div class="row row-cols-1 row-cols-md-4 g-4 text-center text-md-start mb-2">
                 <div class="col d-flex align-items-center justify-content-center justify-content-md-start gap-3">
                     <img src="/assests/logo_Pastelerialama.png" alt="Pastelería Lama" class="footer-logo">
-
                     <div class="footer-socials">
-                        <a href="URL_FACEBOOK" target="_blank">
+                        <a href="https://www.facebook.com/Lama-Pasteler%C3%ADa-panader%C3%ADa-y-bolleria-100054487568378/" target="_blank">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="URL_INSTAGRAM" target="_blank">
+                        <a href="https://www.instagram.com/pastelerialama" target="_blank">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
-
                 <div class="col">
                     <h6 class="footer-title">CONTACTO</h6>
                     <p>926 89 67 74 | 660 87 84 19<br>info@pastelerialama.es</p>
                 </div>
-
                 <div class="col">
                     <h6 class="footer-title">UBICACIÓN</h6>
                     <p>Ctra. de Urda, 1<br>13670 Villarrubia (C. Real)</p>
                 </div>
-
                 <div class="col">
                     <h6 class="footer-title">HORARIO</h6>
                     <p>L-V: 10:00 - 20:00<br>S: 10:00 - 14:30</p>
                 </div>
             </div>
-
             <hr class="footer-divider my-2">
             <div class="row align-items-center py-2">
                 <div class="col-md-6 text-center text-md-start">
@@ -148,8 +261,7 @@
                     </div>
                     <p class="footer-copy small mb-0">© 2026 Pastelería Lama</p>
                 </div>
-                <div
-                    class="col-md-6 d-flex justify-content-center justify-content-md-end gap-3 footer-kit mt-2 mt-md-0">
+                <div class="col-md-6 d-flex justify-content-center justify-content-md-end gap-3 footer-kit mt-2 mt-md-0">
                     <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ue-inv-2.png" alt="UE">
                     <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-mict-inv.png" alt="Gobierno">
                     <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ptr-inv.png" alt="PRTR">
@@ -157,7 +269,7 @@
             </div>
         </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
