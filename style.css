@@ -4,10 +4,10 @@
     --primary-dark: #bc8a5f;
     --secondary-color: #faedcd;
     --bg-light: #d3b08d;
-    --footer-bg: #664c35;
     --gold-text: #dfb777;
     --text-dark: #333333;
     --white: #ffffff;
+    --bg:#f7f6f4;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -19,6 +19,7 @@ body {
     color: var(--text-dark);
     background-color: var(--white);
     overflow-x: hidden;
+    background-color: var(--bg);
 }
 
 h1,
@@ -306,7 +307,7 @@ input[type="tel"].is-valid {
 
 /* Footer Compacto */
 .footer {
-    background-color: var(--footer-bg);
+    background-color: var(--primary-dark);
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.8rem;
 }
