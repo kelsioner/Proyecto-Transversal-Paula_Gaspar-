@@ -7,7 +7,9 @@
     --gold-text: #dfb777;
     --text-dark: #333333;
     --white: #ffffff;
-    --bg:#f7f6f4;
+    --bg: #f7f6f4;
+    /* Variable añadida para evitar errores en botones y cards donde se usaba sin definir */
+    --footer-bg: #553b25; 
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -17,45 +19,25 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
-    background-color: var(--white);
+    background-color: var(--bg); /* Eliminada la redundancia de var(--white) */
     overflow-x: hidden;
-    background-color: var(--bg);
 }
 
-h1,
-h2,
-h3,
-.logo {
+h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif;
 }
 
-/* NAVBAR */
-
-/* Estilo para el logo dentro de la Navbar */
-.nav-logo {
-    max-height: 50px;
-    /* Ajusta este valor según prefieras el tamaño */
-    width: auto;
-    margin-right: 15px;
-    /* Esta es la separación que buscas */
-    display: inline-block;
-    vertical-align: middle;
-}
-
-/* Asegura que el contenedor del logo sea flexible */
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
+/* NAVBAR & LOGO */
 .navbar {
     background-color: var(--white);
     box-shadow: var(--shadow-sm);
     padding: 1rem 0;
 }
 
+/* Selectores .logo fusionados */
 .logo {
+    display: flex;
+    align-items: center;
     font-size: 1.8rem;
     font-weight: bold;
     text-decoration: none !important;
@@ -64,6 +46,14 @@ h3,
 
 .logo span {
     color: var(--primary-color);
+}
+
+.nav-logo {
+    max-height: 50px;
+    width: auto;
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .nav-link {
@@ -90,6 +80,7 @@ h3,
     text-align: center;
 }
 
+/* BOTONES */
 .btn-custom {
     background-color: var(--primary-color);
     color: white !important;
@@ -119,15 +110,13 @@ h3,
     box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
 }
 
+/* CARDS GENERALES */
 .card img {
     width: 100%;
     height: 100%;
 }
 
-
-
-/* CARDS DE PRODUCTOS (VISTA CATEGORÍA) */
-/* --- EFECTO FLIP CARD (ROTACIÓN) PARA PRODUCTOS --- */
+/* --- EFECTO FLIP CARD (ROTACIÓN) --- */
 .product-flip-card {
     width: 100%;
     height: 350px;
@@ -145,7 +134,6 @@ h3,
     transform-style: preserve-3d;
 }
 
-/* Estado al pasar el ratón */
 .product-flip-card:hover .product-card-inner {
     transform: rotateY(180deg);
 }
@@ -161,7 +149,7 @@ h3,
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* CARA DELANTERA (Imagen y Nombre) */
+/* CARA DELANTERA */
 .product-front {
     background-color: var(--white);
     transform: rotateY(0deg);
@@ -178,7 +166,7 @@ h3,
     text-align: center;
 }
 
-/* CARA TRASERA (Alérgenos e Info) */
+/* CARA TRASERA */
 .product-back {
     background-color: var(--bg-light);
     color: var(--white);
@@ -210,12 +198,13 @@ h3,
     color: var(--secondary-color);
 }
 
+/* HEADER CATALOGO */
 .catalog-header {
     background-color: var(--bg-light);
     padding: 4rem 0;
 }
 
-/* CATEGORÍAS GRID (VISTA PRODUCTOS.HTML) */
+/* CATEGORÍAS GRID */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -282,20 +271,13 @@ h3,
     transform: translateY(0);
 }
 
-/* Evita que el icono de error se solape con el calendario nativo */
-input[type="date"].is-invalid {
-    /* Desplazamos el icono de Bootstrap (exclamación) a la izquierda del calendario */
-    background-position: right calc(0.375em + 1rem) center !important;
-    padding-right: calc(1.5em + 2.5rem) !important;
-}
-
+/* FORMULARIOS: Agrupados selectores idénticos */
+input[type="date"].is-invalid,
 input[type="date"].is-valid {
-    /* Desplazamos el icono de Bootstrap (exclamación) a la izquierda del calendario */
     background-position: right calc(0.375em + 1rem) center !important;
     padding-right: calc(1.5em + 2.5rem) !important;
 }
 
-/* Estilo para los inputs de tipo tel */
 input[type="tel"].is-invalid,
 input[type="tel"].is-valid {
     background-position: right calc(0.375em + 0.5rem) center !important;
@@ -305,7 +287,7 @@ input[type="tel"].is-valid {
     text-align: center;
 }
 
-/* Footer Compacto */
+/* FOOTER */
 .footer {
     background-color: var(--primary-dark);
     color: rgba(255, 255, 255, 0.85);
@@ -330,13 +312,11 @@ input[type="tel"].is-valid {
     width: auto;
 }
 
-/* --- ICONOS REDES SOCIALES --- */
 .footer-socials {
     display: flex;
     flex-direction: column;
     gap: 12px;
     border-left: 1px solid rgba(255, 255, 255, 0.3);
-    /* Línea blanca sutil */
     padding-left: 15px;
 }
 
@@ -350,9 +330,7 @@ input[type="tel"].is-valid {
 
 .footer-socials a:hover {
     color: #dfb777 !important;
-    /* Color dorado al pasar el ratón */
     transform: translateX(3px);
-    /* Pequeño movimiento a la derecha */
 }
 
 .footer-kit img {
@@ -364,8 +342,12 @@ input[type="tel"].is-valid {
     opacity: 0.1;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE: Fusionadas todas las media queries */
 @media (max-width: 768px) {
+    .footer {
+        text-align: center;
+    }
+    
     .footer-socials {
         flex-direction: row;
         border-left: none;
@@ -377,12 +359,18 @@ input[type="tel"].is-valid {
     .hero h1 {
         font-size: 3rem;
     }
-}
 
-/* Ajustes para que el footer no se rompa en pantallas pequeñas */
-@media (max-width: 768px) {
-    .footer {
-        text-align: center;
-        /* Centra todo el texto en móviles */
+    /* Corrección para que el footer no se rompa */
+    .footer .col.d-flex {
+        flex-direction: row !important;
+        justify-content: center !important;
+        margin-bottom: 2rem;
+    }
+
+    .footer-kit {
+        justify-content: center !important;
+        flex-wrap: wrap;
+        gap: 15px !important;
+        margin-top: 20px;
     }
 }
