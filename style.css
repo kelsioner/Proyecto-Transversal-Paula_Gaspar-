@@ -8,7 +8,6 @@
     --text-dark: #333333;
     --white: #ffffff;
     --bg: #f7f6f4;
-    /* Variable añadida para evitar errores en botones y cards donde se usaba sin definir */
     --footer-bg: #553b25; 
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
@@ -19,7 +18,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
-    background-color: var(--bg); /* Eliminada la redundancia de var(--white) */
+    background-color: var(--bg);
     overflow-x: hidden;
 }
 
@@ -342,7 +341,7 @@ input[type="tel"].is-valid {
     opacity: 0.1;
 }
 
-/* RESPONSIVE: Fusionadas todas las media queries */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .footer {
         text-align: center;
@@ -360,7 +359,6 @@ input[type="tel"].is-valid {
         font-size: 3rem;
     }
 
-    /* Corrección para que el footer no se rompa */
     .footer .col.d-flex {
         flex-direction: row !important;
         justify-content: center !important;
