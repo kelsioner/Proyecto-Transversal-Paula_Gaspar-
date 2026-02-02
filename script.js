@@ -242,4 +242,99 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // --- LÓGICA DE LOGIN Y REGISTRO ---
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    // 1. VALIDACIÓN REGISTRO
+    if (registerForm) {
+        const regName = document.getElementById('regName');
+        const regEmail = document.getElementById('regEmail');
+        const regPass = document.getElementById('regPass');
+        const regPassConfirm = document.getElementById('regPassConfirm');
+
+        // Validar Nombre (mismo patrón que en encargos)
+        regName.addEventListener('input', () => {
+            const namePattern = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-ZÀ-ÿ\u00f1\u00d1]+)+$/;
+            validateField(regName, namePattern.test(regName.value.trim()));
+        });
+
+        // Validar Email
+        regEmail.addEventListener('input', () => {
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|es)$/;
+            validateField(regEmail, emailPattern.test(regEmail.value));
+        });
+
+        // Validar Coincidencia de Contraseñas
+        const checkPasswords = () => {
+            const isValid = regPass.value.length >= 6;
+            validateField(regPass, isValid);
+            
+            if (regPassConfirm.value !== "") {
+                const doMatch = regPass.value === regPassConfirm.value;
+                validateField(regPassConfirm, doMatch);
+            }
+        };
+
+        regPass.addEventListener('input', checkPasswords);
+        regPassConfirm.addEventListener('input', checkPasswords);
+
+        // Envío Registro
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Verificar si todos los campos tienen la clase is-valid
+            const inputs = registerForm.querySelectorAll('input');
+            let formValido = true;
+            inputs.forEach(input => {
+                if (!input.classList.contains('is-valid')) {
+                    input.classList.add('is-invalid');
+                    formValido = false;
+                }
+            });
+
+            if (formValido) {
+                // Simulación: Cambiar a la pestaña de login
+                alert("¡Registro completado! Por favor, inicia sesión.");
+                document.querySelector('#login-tab').click();
+                registerForm.reset();
+                inputs.forEach(i => i.classList.remove('is-valid'));
+            }
+        });
+    }
+
+    // 2. VALIDACIÓN LOGIN (Simple)
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail');
+            const pass = document.getElementById('loginPassword');
+
+            if (email.value && pass.value) {
+                // AQUÍ SE HARÍA LA REDIRECCIÓN DEPENDIENDO DEL ROL
+                // Como es frontend puro, simulamos ir al panel de cliente
+                const btn = loginForm.querySelector('button');
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Entrando...';
+                
+                setTimeout(() => {
+                    // Redirige a la siguiente pantalla (dashboard)
+                    window.location.href = 'client_dashboard.html'; 
+                }, 1000);
+            } else {
+                email.classList.add('is-invalid');
+                pass.classList.add('is-invalid');
+            }
+        });
+    }
+
+    // Función auxiliar para validación visual
+    function validateField(field, condition) {
+        if (condition) {
+            field.classList.remove('is-invalid');
+            field.classList.add('is-valid');
+        } else {
+            field.classList.remove('is-valid');
+            field.classList.add('is-invalid');
+        }
+    }
 });

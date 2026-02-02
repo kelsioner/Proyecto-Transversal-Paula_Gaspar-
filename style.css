@@ -1,4 +1,6 @@
-/* VARIABLES GLOBALES */
+/* =========================================
+   1. VARIABLES GLOBALES
+   ========================================= */
 :root {
     --primary-color: #d4a373;
     --primary-dark: #bc8a5f;
@@ -8,13 +10,14 @@
     --text-dark: #333333;
     --white: #ffffff;
     --bg: #f7f6f4;
-    --footer-bg: #553b25; 
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* RESET & BASE */
+/* =========================================
+   2. RESET & BASE
+   ========================================= */
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-dark);
@@ -22,28 +25,30 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1, h2, h3, .logo, .font-serif {
     font-family: 'Playfair Display', serif;
 }
 
-/* NAVBAR & LOGO */
+/* =========================================
+   3. NAVBAR & NAVEGACIÓN
+   ========================================= */
 .navbar {
     background-color: var(--white);
     box-shadow: var(--shadow-sm);
     padding: 1rem 0;
 }
 
-/* Selectores .logo fusionados */
-.logo {
+/* Logo: Aumentamos especificidad para asegurar color */
+a.logo {
     display: flex;
     align-items: center;
     font-size: 1.8rem;
     font-weight: bold;
-    text-decoration: none !important;
+    text-decoration: none;
     color: var(--text-dark);
 }
 
-.logo span {
+a.logo span {
     color: var(--primary-color);
 }
 
@@ -55,19 +60,75 @@ h1, h2, h3, .logo {
     vertical-align: middle;
 }
 
-.nav-link {
+/* Enlaces de navegación */
+.navbar-nav .nav-link {
     font-weight: 500;
-    color: var(--text-dark) !important;
+    color: var(--text-dark); /* Color base */
     margin: 0 10px;
     transition: var(--transition);
 }
 
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-color) !important;
+/* Estado hover y activo: Usamos especificidad en lugar de !important */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
 }
 
-/* HERO SECTION */
+/* =========================================
+   4. COMPONENTES UI (Botones, Inputs)
+   ========================================= */
+/* Botón Principal */
+.btn-custom {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem 2.5rem;
+    border: 1px solid var(--primary-color); /* Borde para evitar saltos */
+    transition: var(--transition);
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+}
+
+/* Botón Secundario */
+.btn-outline-secondary {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 0.8rem 2.5rem;
+    border: 1px solid var(--primary-dark);
+    transition: var(--transition);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
+}
+
+/* Inputs de formulario: Validación y Posicionamiento de Iconos */
+input.form-control.is-invalid,
+input.form-control.is-valid {
+    padding-right: calc(1.5em + 0.75rem); /* Espacio para icono Bootstrap */
+    background-position: right calc(0.375em + 0.5rem) center;
+}
+
+/* Ajuste específico para Inputs de Fecha (evitar solapamiento con calendario) */
+input[type="date"].form-control.is-invalid,
+input[type="date"].form-control.is-valid {
+    background-position: right calc(0.375em + 1.8rem) center;
+    padding-right: calc(1.5em + 2.5rem);
+}
+
+/* =========================================
+   5. SECCIONES (Hero, Catálogo)
+   ========================================= */
 .hero {
     height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
@@ -79,131 +140,19 @@ h1, h2, h3, .logo {
     text-align: center;
 }
 
-/* BOTONES */
-.btn-custom {
-    background-color: var(--primary-color);
-    color: white !important;
-    border-radius: 50px;
-    padding: 0.8rem 2.5rem;
-    border: none;
-    transition: var(--transition);
-}
-
-.btn-custom:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
-}
-
-.btn-outline-secondary {
-    background-color: var(--footer-bg);
-    color: white !important;
-    border-radius: 50px;
-    padding: 0.8rem 2.5rem;
-    border: none;
-    transition: var(--transition);
-}
-
-.btn-outline-secondary:hover {
-    background-color: var(--primary-dark);
-    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.4);
-}
-
-/* CARDS GENERALES */
-.card img {
-    width: 100%;
-    height: 100%;
-}
-
-/* --- EFECTO FLIP CARD (ROTACIÓN) --- */
-.product-flip-card {
-    width: 100%;
-    height: 350px;
-    perspective: 1000px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-
-.product-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-}
-
-.product-flip-card:hover .product-card-inner {
-    transform: rotateY(180deg);
-}
-
-.product-front,
-.product-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* CARA DELANTERA */
-.product-front {
-    background-color: var(--white);
-    transform: rotateY(0deg);
-}
-
-.product-front img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.product-front-info {
-    padding: 1rem;
-    text-align: center;
-}
-
-/* CARA TRASERA */
-.product-back {
-    background-color: var(--bg-light);
-    color: var(--white);
-    transform: rotateY(180deg);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-}
-
-.product-back h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--footer-bg);
-}
-
-.allergen-info {
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.allergen-icons {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    display: flex;
-    gap: 10px;
-    color: var(--secondary-color);
-}
-
-/* HEADER CATALOGO */
 .catalog-header {
     background-color: var(--bg-light);
     padding: 4rem 0;
 }
 
-/* CATEGORÍAS GRID */
+.title {
+    text-align: center;
+}
+
+/* =========================================
+   6. TARJETAS DE PRODUCTOS (Flip & Grid)
+   ========================================= */
+/* Grid de Categorías */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -257,36 +206,131 @@ h1, h2, h3, .logo {
     transition-delay: 0.1s;
 }
 
-.category-card:hover img {
-    transform: scale(1.1);
-}
-
-.category-card:hover .category-overlay {
-    opacity: 1;
-}
-
+.category-card:hover img { transform: scale(1.1); }
+.category-card:hover .category-overlay { opacity: 1; }
 .category-card:hover .category-overlay h3,
-.category-card:hover .category-overlay p {
-    transform: translateY(0);
+.category-card:hover .category-overlay p { transform: translateY(0); }
+
+/* Flip Cards (Productos Individuales) */
+.product-flip-card {
+    width: 100%;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
-/* FORMULARIOS: Agrupados selectores idénticos */
-input[type="date"].is-invalid,
-input[type="date"].is-valid {
-    background-position: right calc(0.375em + 1rem) center !important;
-    padding-right: calc(1.5em + 2.5rem) !important;
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
 }
 
-input[type="tel"].is-invalid,
-input[type="tel"].is-valid {
-    background-position: right calc(0.375em + 0.5rem) center !important;
+.product-flip-card:hover .product-card-inner {
+    transform: rotateY(180deg);
 }
 
-.title {
+.product-front, .product-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-front {
+    background-color: var(--white);
+    transform: rotateY(0deg);
+}
+
+.product-front img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.product-front-info {
+    padding: 1rem;
     text-align: center;
 }
 
-/* FOOTER */
+.product-back {
+    background-color: var(--bg-light);
+    color: var(--white);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.product-back h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+}
+
+.allergen-info { font-size: 1rem; line-height: 1.4; }
+.allergen-icons {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    gap: 10px;
+    color: var(--secondary-color);
+}
+
+/* =========================================
+   7. PÁGINA LOGIN (Auth)
+   ========================================= */
+.auth-section {
+    min-height: 85vh;
+    background-color: var(--bg);
+    background-image: radial-gradient(#d4a3731a 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.auth-card {
+    border-radius: 20px;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+/* Tabs personalizadas */
+.nav-pills .nav-link {
+    color: var(--text-dark);
+    background-color: transparent;
+    border-radius: 50px;
+    padding: 10px 20px;
+    transition: var(--transition);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--bg-light);
+    color: var(--white);
+}
+
+/* Inputs flotantes */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--primary-dark);
+    opacity: 0.8;
+}
+
+.form-floating > .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(212, 163, 115, 0.25);
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
 .footer {
     background-color: var(--primary-dark);
     color: rgba(255, 255, 255, 0.85);
@@ -294,7 +338,7 @@ input[type="tel"].is-valid {
 }
 
 .footer-title {
-    color: #dfb777;
+    color: var(--gold-text);
     font-size: 0.7rem;
     letter-spacing: 1.5px;
     font-weight: 700;
@@ -311,6 +355,7 @@ input[type="tel"].is-valid {
     width: auto;
 }
 
+/* Redes Sociales */
 .footer-socials {
     display: flex;
     flex-direction: column;
@@ -319,50 +364,63 @@ input[type="tel"].is-valid {
     padding-left: 15px;
 }
 
-.footer-socials a {
-    color: #ffffff !important;
-    font-size: 1.2rem;
-    transition: var(--transition);
-    line-height: 1;
+/* Enlaces del Footer (Redes + Legales) */
+.footer a {
+    color: var(--white);
     text-decoration: none;
+    transition: var(--transition);
 }
 
+.footer-socials a {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.footer a:hover {
+    color: var(--gold-text);
+}
+
+/* Movimiento específico para redes sociales */
 .footer-socials a:hover {
-    color: #dfb777 !important;
     transform: translateX(3px);
 }
 
 .footer-kit img {
     height: 25px;
     opacity: 0.7;
+    filter: brightness(0) invert(1); /* Asegura que los logos sean blancos */
 }
 
 .footer-divider {
-    opacity: 0.1;
+    opacity: 0.15;
+    border-color: var(--white);
 }
 
-/* RESPONSIVE */
+/* =========================================
+   9. RESPONSIVE (Móvil)
+   ========================================= */
 @media (max-width: 768px) {
-    .footer {
-        text-align: center;
-    }
+    .hero h1 { font-size: 2.5rem; } /* Ajuste de tamaño texto hero */
     
-    .footer-socials {
-        flex-direction: row;
-        border-left: none;
-        padding-left: 0;
-        justify-content: center;
-        margin-top: 1rem;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-    }
+    .footer { text-align: center; }
 
     .footer .col.d-flex {
         flex-direction: row !important;
         justify-content: center !important;
         margin-bottom: 2rem;
+    }
+
+    .footer-socials {
+        flex-direction: row;
+        border-left: none;
+        padding-left: 0;
+        justify-content: center;
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+    
+    .footer-socials a:hover {
+        transform: translateY(-3px); /* En móvil el movimiento es vertical */
     }
 
     .footer-kit {
