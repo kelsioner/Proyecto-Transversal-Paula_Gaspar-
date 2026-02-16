@@ -506,7 +506,6 @@ input[type="date"].form-control.is-valid {
     transform: none;
 }
 
-/* 2) En dispositivos que SÍ tienen hover (ordenador), activamos el giro al hover */
 @media (hover: hover) and (pointer: fine) {
     .product-flip-card:hover .product-card-inner {
         transform: rotateY(180deg);
