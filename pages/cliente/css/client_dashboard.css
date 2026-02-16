@@ -1,0 +1,216 @@
+/* /pages/cliente/css/client_dashboard.css */
+
+.cd-card{
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.04);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+}
+
+.cd-card-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom: 12px;
+}
+
+.cd-title{
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.cd-sub{
+  color: rgba(0,0,0,.55);
+  font-size: .92rem;
+  margin-top: 4px;
+}
+
+.cd-search{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(212,163,115,.10);
+  border: 1px solid rgba(212,163,115,.25);
+}
+.cd-search i{ color: var(--primary-dark); opacity:.8; }
+.cd-search input{
+  border:none;
+  outline:none;
+  background: transparent;
+  min-width: 220px;
+}
+
+.cd-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cd-item{
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.04);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 14px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition: var(--transition);
+}
+.cd-item:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.cd-item-top{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.cd-thumb{
+  width:46px;
+  height:46px;
+  border-radius: 16px;
+  display:grid;
+  place-items:center;
+  background: rgba(212,163,115,.16);
+  color: var(--primary-dark);
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+}
+
+.cd-name{ font-weight: 800; }
+.cd-meta{ color: rgba(0,0,0,.58); font-size: .92rem; margin-top:2px; }
+
+.cd-price{
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.cd-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:auto;
+}
+
+.cd-add{
+  border:none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  background: rgba(212,163,115,.18);
+  color: var(--primary-dark);
+  transition: var(--transition);
+}
+.cd-add:hover{
+  transform: translateY(-1px);
+  background: rgba(212,163,115,.28);
+}
+
+.cd-stock{
+  font-size: .85rem;
+  color: rgba(0,0,0,.58);
+}
+
+/* Summary */
+.cd-summary{
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.04);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  position: sticky;
+  top: 90px;
+}
+
+.cd-summary-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.cd-link{
+  background: transparent;
+  border: none;
+  color: var(--primary-dark);
+  font-weight: 800;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 8px;
+  border-radius: 12px;
+}
+.cd-link:hover{ background: rgba(212,163,115,.12); }
+
+.cd-empty{
+  border: 1px dashed rgba(0,0,0,.12);
+  border-radius: 18px;
+  padding: 18px;
+  text-align:center;
+  color: rgba(0,0,0,.55);
+}
+
+.cd-cart{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:10px;
+}
+
+.cd-cart li{
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  padding: 12px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+}
+
+.cd-line-title{ font-weight: 800; }
+.cd-line-sub{ font-size: .9rem; color: rgba(0,0,0,.55); }
+
+.cd-qty{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.cd-qty button{
+  width:34px;
+  height:34px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(212,163,115,.10);
+  color: var(--primary-dark);
+  font-weight: 900;
+}
+
+.cd-qty span{ min-width: 18px; text-align:center; font-weight: 800; }
+
+.cd-total{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top: 12px;
+}
+.cd-total-val{
+  font-family:'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+@media (max-width: 992px){
+  .cd-summary{ position: static; top:auto; }
+  .cd-grid{ grid-template-columns: 1fr; }
+  .cd-search input{ min-width: 180px; }
+}

@@ -1,0 +1,427 @@
+/* /pages/trabajador/css/employee.css
+   Estilo integrado con style.css (Pastelería Lama)
+   - Mantiene scoping con .emp-page
+*/
+
+/* =========================
+   1) VARIABLES (toman base de style.css)
+   ========================= */
+:root {
+  /* Usamos variables globales si existen */
+  --emp-bg: var(--bg, #f7f6f4);
+  --emp-card: var(--white, #ffffff);
+  --emp-text: var(--text-dark, #333333);
+
+  --emp-muted: rgba(51, 51, 51, 0.65);
+  --emp-border: rgba(188, 138, 95, 0.22); /* prim-dark suavizado */
+  --emp-soft: rgba(212, 163, 115, 0.12);
+
+  --emp-primary: var(--primary-color, #d4a373);
+  --emp-primary-dark: var(--primary-dark, #bc8a5f);
+  --emp-secondary: var(--secondary-color, #faedcd);
+
+  --emp-shadow-sm: var(--shadow-sm, 0 2px 15px rgba(0, 0, 0, 0.05));
+  --emp-shadow-md: var(--shadow-md, 0 10px 20px rgba(0, 0, 0, 0.1));
+  --emp-radius-lg: 20px;
+  --emp-radius-md: 15px;
+
+  --emp-transition: var(--transition, all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+
+  /* Feedback */
+  --emp-ok: #2e7d32;
+  --emp-warn: #b26a00;
+  --emp-danger: #b42318;
+}
+
+/* =========================
+   2) SCOPED BASE
+   ========================= */
+.emp-page,
+.emp-page * {
+  box-sizing: border-box;
+}
+
+.emp-page {
+  color: var(--emp-text);
+}
+
+/* Titulares un poco más “serif” como tu web */
+.emp-page h2,
+.emp-page h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* =========================
+   3) TOPBAR / CABECERA
+   ========================= */
+.emp-topbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.emp-title h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  letter-spacing: 0.2px;
+}
+
+.emp-title p {
+  margin: 8px 0 0;
+  color: var(--emp-muted);
+  font-size: 0.95rem;
+}
+
+.emp-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* =========================
+   4) CARD CONTENEDOR
+   ========================= */
+.emp-card {
+  background: var(--emp-card);
+  border-radius: var(--emp-radius-lg);
+  box-shadow: var(--emp-shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 18px;
+}
+
+/* Un “header” suave para separar */
+.emp-card > h3 {
+  margin: 0 0 10px;
+}
+
+/* =========================
+   5) BOTONES (estilo Lama)
+   ========================= */
+.emp-btn {
+  border: 1px solid rgba(188, 138, 95, 0.35);
+  background-color: transparent;
+  color: var(--emp-primary-dark);
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  font-weight: 700;
+  transition: var(--emp-transition);
+  box-shadow: none;
+}
+
+.emp-btn:hover {
+  background: rgba(212, 163, 115, 0.14);
+  transform: translateY(-2px);
+}
+
+.emp-btn.primary {
+  background-color: var(--emp-primary);
+  border-color: var(--emp-primary);
+  color: var(--white, #fff);
+}
+
+.emp-btn.primary:hover {
+  background-color: var(--emp-primary-dark);
+  border-color: var(--emp-primary-dark);
+  color: var(--white, #fff);
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.35);
+}
+
+.emp-btn.danger {
+  background: rgba(180, 35, 24, 0.08);
+  border-color: rgba(180, 35, 24, 0.35);
+  color: var(--emp-danger);
+}
+
+.emp-btn.danger:hover {
+  background: rgba(180, 35, 24, 0.12);
+  transform: translateY(-2px);
+}
+
+.emp-btn.small {
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.emp-btn.icon {
+  width: 42px;
+  justify-content: center;
+  padding: 0.55rem 0;
+}
+
+/* =========================
+   6) TABS (productos / ingredientes)
+   ========================= */
+.emp-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.emp-tab {
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(188, 138, 95, 0.35);
+  background: rgba(212, 163, 115, 0.08);
+  color: var(--emp-primary-dark);
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.9rem;
+  transition: var(--emp-transition);
+}
+
+.emp-tab:hover {
+  background: rgba(212, 163, 115, 0.14);
+  transform: translateY(-1px);
+}
+
+.emp-tab.active {
+  background: var(--emp-primary-dark);
+  border-color: var(--emp-primary-dark);
+  color: var(--white, #fff);
+}
+
+/* =========================
+   7) TABLAS (suaves, separadas)
+   ========================= */
+.emp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+}
+
+.emp-table th {
+  text-align: left;
+  font-size: 0.78rem;
+  color: rgba(51, 51, 51, 0.65);
+  font-weight: 800;
+  padding: 0 12px 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.emp-table td {
+  padding: 14px 12px;
+  background: rgba(250, 237, 205, 0.35); /* secondary suave */
+  border-top: 1px solid rgba(188, 138, 95, 0.18);
+  border-bottom: 1px solid rgba(188, 138, 95, 0.18);
+}
+
+.emp-table tr td:first-child {
+  border-left: 1px solid rgba(188, 138, 95, 0.18);
+  border-top-left-radius: var(--emp-radius-md);
+  border-bottom-left-radius: var(--emp-radius-md);
+}
+
+.emp-table tr td:last-child {
+  border-right: 1px solid rgba(188, 138, 95, 0.18);
+  border-top-right-radius: var(--emp-radius-md);
+  border-bottom-right-radius: var(--emp-radius-md);
+}
+
+.emp-row-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* =========================
+   8) BADGES (stock/estado)
+   ========================= */
+.emp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--emp-text);
+}
+
+.emp-badge.ok {
+  border-color: rgba(46, 125, 50, 0.25);
+  background: rgba(46, 125, 50, 0.10);
+  color: var(--emp-ok);
+}
+
+.emp-badge.warn {
+  border-color: rgba(178, 106, 0, 0.25);
+  background: rgba(178, 106, 0, 0.10);
+  color: var(--emp-warn);
+}
+
+/* =========================
+   9) INPUTS / TEXTAREA
+   ========================= */
+.emp-input,
+.emp-textarea {
+  width: 100%;
+  border: 1px solid rgba(188, 138, 95, 0.35);
+  background: var(--white, #fff);
+  color: var(--emp-text);
+  border-radius: 14px;
+  padding: 0.75rem 0.9rem;
+  outline: none;
+  transition: var(--emp-transition);
+}
+
+.emp-input:focus,
+.emp-textarea:focus {
+  border-color: var(--emp-primary);
+  box-shadow: 0 0 0 0.25rem rgba(212, 163, 115, 0.25);
+}
+
+.emp-textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+/* =========================
+   10) MODAL (claro, acorde)
+   ========================= */
+.emp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.50);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 50;
+}
+
+.emp-modal-backdrop.show {
+  display: flex;
+}
+
+.emp-modal {
+  width: min(720px, 100%);
+  background: var(--white, #fff);
+  border-radius: var(--emp-radius-lg);
+  padding: 18px;
+  box-shadow: var(--emp-shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.emp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.emp-modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   11) FICHAJE (botón grande + lista)
+   ========================= */
+.emp-big-btn {
+  width: 100%;
+  padding: 1.1rem 1rem;
+  border-radius: 18px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  border: 1px solid rgba(188, 138, 95, 0.35);
+  cursor: pointer;
+  transition: var(--emp-transition);
+  background: rgba(212, 163, 115, 0.12);
+  color: var(--emp-primary-dark);
+}
+
+.emp-big-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 163, 115, 0.18);
+}
+
+.emp-big-btn.in {
+  background: rgba(212, 163, 115, 0.18);
+  border-color: rgba(212, 163, 115, 0.55);
+}
+
+.emp-big-btn.out {
+  background: rgba(188, 138, 95, 0.18);
+  border-color: rgba(188, 138, 95, 0.55);
+}
+
+.emp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.emp-list li {
+  border: 1px solid rgba(188, 138, 95, 0.18);
+  background: rgba(250, 237, 205, 0.35);
+  border-radius: var(--emp-radius-md);
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.emp-muted {
+  color: var(--emp-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================
+   12) RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+  .emp-card { padding: 16px; }
+  .emp-table th { display: none; }
+
+  /* En móvil, tabla “stack” suave */
+  .emp-table,
+  .emp-table tbody,
+  .emp-table tr,
+  .emp-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .emp-table {
+    border-spacing: 0;
+  }
+
+  .emp-table tr {
+    margin-bottom: 14px;
+    border-radius: var(--emp-radius-md);
+    overflow: hidden;
+    box-shadow: var(--emp-shadow-sm);
+  }
+
+  .emp-table td {
+    border: 1px solid rgba(188, 138, 95, 0.16);
+    border-radius: 0;
+  }
+
+  .emp-table tr td:first-child,
+  .emp-table tr td:last-child {
+    border-radius: 0;
+  }
+
+  .emp-row-actions {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+}

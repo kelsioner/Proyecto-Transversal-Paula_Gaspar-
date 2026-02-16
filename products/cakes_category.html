@@ -28,6 +28,7 @@
                     <li class="nav-item"><a class="nav-link" href="/pages/products.html">Productos</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pages/orders.html">Encargos</a></li>
                     <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pages/login.html" id="navAuthLink">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -43,6 +44,7 @@
 
     <main class="container py-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
             <div class="col">
                 <div class="product-flip-card">
                     <div class="product-card-inner">
@@ -67,12 +69,17 @@
                                 <i class="fas fa-cow" title="Contiene Lácteos"></i>
                                 <i class="fas fa-egg" title="Contiene Huevo"></i>
                             </div>
-                            <p class="mt-3 small"><i>Pulsa para encargar</i></p>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+
             <div class="col">
                 <div class="product-flip-card">
                     <div class="product-card-inner">
@@ -92,6 +99,11 @@
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-cow" title="Lácteos"></i>
                                 <i class="fas fa-egg" title="Huevo"></i>
+                            </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
                             </div>
                         </div>
                     </div>
@@ -117,6 +129,11 @@
                                 <i class="fas fa-cow" title="Lácteos"></i>
                                 <i class="fas fa-egg" title="Huevo"></i>
                             </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,6 +157,11 @@
                             <div class="allergen-icons">
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-cow" title="Lácteos"></i>
+                            </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
                             </div>
                         </div>
                     </div>
@@ -165,6 +187,11 @@
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-seedling" title="Frutos de cáscara"></i>
                             </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -188,6 +215,11 @@
                             <div class="allergen-icons">
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-egg" title="Huevo"></i>
+                            </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
                             </div>
                         </div>
                     </div>
@@ -213,6 +245,11 @@
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-egg" title="Huevo"></i>
                             </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,10 +274,16 @@
                                 <i class="fas fa-bread-slice" title="Gluten"></i>
                                 <i class="fas fa-cow" title="Lácteos"></i>
                             </div>
+
+                            <div class="product-action">
+                                <a class="product-action-btn product-action-btn--login js-product-action"
+                                    href="/pages/login.html">Inicia sesión para pedir</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -282,7 +325,7 @@
             <div class="row align-items-center py-2">
                 <div class="col-md-6 text-center text-md-start">
                     <div class="footer-links small mb-1">
-                        <a href="#">Aviso Legal</a> | <a href="#">Cookies</a> | <a href="#">Privacidad</a>
+                        <a href="/pages/aviso-legal.html">Aviso Legal</a> | <a href="/pages/cookies.html">Cookies</a> | <a href="/pages/privacidad.html">Privacidad</a>
                     </div>
                     <p class="footer-copy small mb-0">© 2026 Pastelería Lama</p>
                 </div>
@@ -295,7 +338,8 @@
             </div>
         </div>
     </footer>
+    <script src="../auth-core.js"></script>
+    <script src="../script.js"></script>
 
 </body>
-
 </html>

@@ -286,6 +286,8 @@ input[type="date"].form-control.is-valid {
     color: var(--secondary-color);
 }
 
+
+
 /* =========================================
    7. PÁGINA LOGIN (Auth)
    ========================================= */
@@ -429,4 +431,89 @@ input[type="date"].form-control.is-valid {
         gap: 15px !important;
         margin-top: 20px;
     }
+}
+
+/* =========================================
+   6.X ACCIÓN EN TARJETAS (botón según rol)
+   ========================================= */
+
+.product-action {
+    width: 100%;
+    margin-top: 1.1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.product-action-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* No logueado */
+.product-action-btn--login {
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
+}
+
+.product-action-btn--login:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+}
+
+/* Cliente (encargar) */
+.product-action-btn--order {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: var(--white);
+}
+
+.product-action-btn--order:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 163, 115, 0.35);
+}
+
+/* Admin/Trabajador (modificar) */
+.product-action-btn--edit {
+    background: transparent;
+    color: var(--primary-dark);
+    border-color: rgba(188, 138, 95, 0.9);
+}
+
+.product-action-btn--edit:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   Flip: hover en PC / tap en móvil
+   ============================== */
+
+/* 1) Por defecto, NO usamos hover global (lo controlamos por media query) */
+.product-flip-card:hover .product-card-inner {
+    transform: none;
+}
+
+/* 2) En dispositivos que SÍ tienen hover (ordenador), activamos el giro al hover */
+@media (hover: hover) and (pointer: fine) {
+    .product-flip-card:hover .product-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* 3) En móvil/tablet: giro cuando JS añade la clase */
+.product-flip-card.is-flipped .product-card-inner {
+    transform: rotateY(180deg);
 }

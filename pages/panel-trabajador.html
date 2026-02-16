@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Trabajador | Pastelería Lama</title>
+
+    <link rel="icon" type="image/png" href="../assests/faviconLama.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .panel-wrap { padding: 60px 0; }
+        .panel-card { border-radius: 18px; }
+        .save-hint { font-size: .9rem; }
+
+        /* Acciones rápidas (igual que panel-admin) */
+        .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+        }
+        .quick-card {
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid rgba(0,0,0,.04);
+        box-shadow: var(--shadow-sm);
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text-dark);
+        transition: var(--transition);
+        }
+        .quick-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        }
+        .quick-ico {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(212,163,115,.16);
+        color: var(--primary-dark);
+        flex: 0 0 auto;
+        font-size: 1.05rem;
+        }
+        .quick-title { font-weight: 800; }
+        .quick-sub { font-size: .9rem; opacity: .75; margin-top: 2px; }
+
+        @media (max-width: 992px){
+        .quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 576px){
+        .quick-actions { grid-template-columns: 1fr; }
+        }
+    </style>
+    </head>
+
+    <body data-required-role="trabajador">
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+        <img src="/assests/Logo Lama.png" alt="Pastelería Lama" class="nav-logo me-3">
+        <a class="logo" href="../index.html">Pastelería <span>Lama</span></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/products.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/orders.html">Encargos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/login.html" id="navAuthLink">Login</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <main class="panel-wrap">
+        <div class="container">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+            <h1 class="h3 fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Panel de trabajador</h1>
+            <div class="text-muted">Gestiona tu perfil y accesos</div>
+            </div>
+
+            <button id="logoutBtn" class="btn btn-danger px-4 py-2 fw-bold">
+            <i class="fa-solid fa-right-from-bracket me-2"></i>Cerrar sesión
+            </button>
+        </div>
+
+        <!-- ACCIONES RÁPIDAS (ahora como el admin) -->
+        <div class="quick-actions">
+            <a class="quick-card" href="/pages/trabajador/employee_inventory.html">
+            <div class="quick-ico"><i class="fa-solid fa-boxes-stacked"></i></div>
+            <div>
+                <div class="quick-title">Inventario</div>
+                <div class="quick-sub">Productos e ingredientes</div>
+            </div>
+            </a>
+
+            <a class="quick-card" href="/pages/trabajador/employee_orders.html">
+            <div class="quick-ico"><i class="fa-solid fa-receipt"></i></div>
+            <div>
+                <div class="quick-title">Pedidos</div>
+                <div class="quick-sub">Pendiente / Entregado</div>
+            </div>
+            </a>
+
+            <a class="quick-card" href="/pages/trabajador/time_clock.html">
+            <div class="quick-ico"><i class="fa-solid fa-clock"></i></div>
+            <div>
+                <div class="quick-title">Fichaje</div>
+                <div class="quick-sub">Entrada / Salida</div>
+            </div>
+            </a>
+        </div>
+
+        <div class="card panel-card border-0 shadow-lg">
+            <div class="card-body p-4 p-md-5">
+            <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+                <div>
+                <div class="small text-muted">Sesión iniciada como</div>
+                <div class="fw-semibold" id="userEmail">—</div>
+                <div class="small text-muted">Rol: <span id="userRole">—</span></div>
+                </div>
+                <div id="saveHint" class="text-success d-none save-hint">Cambios guardados ✓</div>
+            </div>
+
+            <form id="profileForm" class="row g-3">
+                <div class="col-12">
+                <label class="form-label">Nombre</label>
+                <input class="form-control" data-profile="name" placeholder="Ej: Marta López">
+                </div>
+
+                <div class="col-md-6">
+                <label class="form-label">Teléfono</label>
+                <input class="form-control" data-profile="phone" placeholder="Ej: 600 000 000">
+                </div>
+
+                <div class="col-md-6">
+                <label class="form-label">Puesto</label>
+                <input class="form-control" data-profile="job" placeholder="Ej: Obrador / Atención al cliente">
+                </div>
+
+                <div class="col-12">
+                <label class="form-label">Notas / disponibilidad</label>
+                <textarea class="form-control" rows="5" data-profile="notes" placeholder="Ej: horario, tareas..."></textarea>
+                </div>
+            </form>
+
+            </div>
+        </div>
+
+        </div>
+    </main>
+
+    <footer class="footer pt-4 pb-2">
+        <div class="container">
+        <div class="row row-cols-1 row-cols-md-4 g-4 text-center text-md-start mb-2">
+            <div class="col d-flex align-items-center justify-content-center justify-content-md-start gap-3">
+            <img src="/assests/logo_Pastelerialama.png" alt="Pastelería Lama" class="footer-logo">
+
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/Lama-Pasteler%C3%ADa-panader%C3%ADa-y-bolleria-100054487568378/" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/pastelerialama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">CONTACTO</h6>
+            <p>926 89 67 74 | 660 87 84 19<br>info@pastelerialama.es</p>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">UBICACIÓN</h6>
+            <p>Ctra. de Urda, 1<br>13670 Villarrubia (C. Real)</p>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">HORARIO</h6>
+            <p>L-V: 10:00 - 20:00<br>S: 10:00 - 14:30</p>
+            </div>
+        </div>
+
+        <hr class="footer-divider my-2">
+        <div class="row align-items-center py-2">
+            <div class="col-md-6 text-center text-md-start">
+            <div class="footer-links small mb-1">
+                <a href="/pages/aviso-legal.html">Aviso Legal</a> | <a href="/pages/cookies.html">Cookies</a> | <a href="/pages/privacidad.html">Privacidad</a>
+            </div>
+            <p class="footer-copy small mb-0">© 2026 Pastelería Lama</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-end gap-3 footer-kit mt-2 mt-md-0">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ue-inv-2.png" alt="UE">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-mict-inv.png" alt="Gobierno">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ptr-inv.png" alt="PRTR">
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../auth-core.js"></script>
+    <script src="../panel.js"></script>
+</body>
+</html>

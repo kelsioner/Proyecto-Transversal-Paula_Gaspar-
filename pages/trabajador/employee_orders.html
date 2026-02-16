@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedidos | Panel Trabajador</title>
+
+    <link rel="icon" type="image/png" href="../../assests/faviconLama.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./css/employee.css">
+    </head>
+
+    <body data-required-role="trabajador" data-allow-roles="trabajador,admin">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+        <img src="/assests/Logo Lama.png" alt="Pastelería Lama" class="nav-logo me-3">
+        <a class="logo" href="/index.html">Pastelería <span>Lama</span></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="/index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/products.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/orders.html">Encargos</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/contact.html">Contacto</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/login.html" id="navAuthLink">Login</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <main class="py-5">
+        <div class="container emp-page">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+            <h1 class="h3 fw-bold mb-1" style="font-family: 'Playfair Display', serif;">Pedidos</h1>
+            <div class="text-muted">Listado y cambio de estado</div>
+            </div>
+
+            <div class="d-flex gap-2">
+            <a class="btn btn-outline-secondary fw-bold" href="/pages/panel-trabajador.html">
+                <i class="fa-solid fa-arrow-left me-2"></i>Volver al panel
+            </a>
+            <button id="logoutBtn" class="btn btn-danger fw-bold">
+                <i class="fa-solid fa-right-from-bracket me-2"></i>Cerrar sesión
+            </button>
+            </div>
+        </div>
+
+        <div class="emp-topbar">
+            <div class="emp-title">
+            <h2>Gestión de Pedidos</h2>
+            <p>Ordenados por fecha · Estado <b>Pendiente</b> / <b>Entregado</b></p>
+            </div>
+
+            <div class="emp-actions">
+            <button class="emp-btn" id="btnSeed">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Añadir demo
+            </button>
+            </div>
+        </div>
+
+        <section class="emp-card">
+            <table class="emp-table" aria-label="Tabla de pedidos">
+            <thead>
+                <tr>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Detalle</th>
+                <th>Estado</th>
+                <th style="text-align:right;">Cambiar</th>
+                </tr>
+            </thead>
+            <tbody id="ordersTbody"></tbody>
+            </table>
+        </section>
+        </div>
+    </main>
+
+    <footer class="footer pt-4 pb-2">
+        <div class="container">
+        <div class="row row-cols-1 row-cols-md-4 g-4 text-center text-md-start mb-2">
+            <div class="col d-flex align-items-center justify-content-center justify-content-md-start gap-3">
+            <img src="/assests/logo_Pastelerialama.png" alt="Pastelería Lama" class="footer-logo">
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/Lama-Pasteler%C3%ADa-panader%C3%ADa-y-bolleria-100054487568378/" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/pastelerialama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">CONTACTO</h6>
+            <p>926 89 67 74 | 660 87 84 19<br>info@pastelerialama.es</p>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">UBICACIÓN</h6>
+            <p>Ctra. de Urda, 1<br>13670 Villarrubia (C. Real)</p>
+            </div>
+
+            <div class="col">
+            <h6 class="footer-title">HORARIO</h6>
+            <p>L-V: 10:00 - 20:00<br>S: 10:00 - 14:30</p>
+            </div>
+        </div>
+
+        <hr class="footer-divider my-2">
+        <div class="row align-items-center py-2">
+            <div class="col-md-6 text-center text-md-start">
+            <div class="footer-links small mb-1">
+                <a href="/pages/aviso-legal.html">Aviso Legal</a> | <a href="/pages/cookies.html">Cookies</a> | <a href="/pages/privacidad.html">Privacidad</a>
+            </div>
+            <p class="footer-copy small mb-0">© 2026 Pastelería Lama</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center justify-content-md-end gap-3 footer-kit mt-2 mt-md-0">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ue-inv-2.png" alt="UE">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-mict-inv.png" alt="Gobierno">
+            <img src="https://pastelerialama.es/wp-content/uploads/2025/03/logo-ptr-inv.png" alt="PRTR">
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../auth-core.js"></script>
+
+    <script src="./js/employee_store.js"></script>
+    <script src="./js/employee_orders.js"></script>
+</body>
+</html>
