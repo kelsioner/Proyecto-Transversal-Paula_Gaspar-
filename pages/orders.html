@@ -20,7 +20,7 @@
         <div class="container">
             <img src="/assests/Logo Lama.png" alt="Pastelería Lama" class="nav-logo me-3">
             <a class="logo" href="../index.html">Pastelería <span>Lama</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="inicio">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -52,28 +52,28 @@
                                     <label class="form-label fw-semibold">Nombre</label>
                                     <input type="text" id="nameInput"
                                         class="form-control p-3 border-light-subtle shadow-none" required
-                                        placeholder="Tu nombre">
+                                        placeholder="Tu nombre"  aria-label="nombre">
                                     <div class="invalid-feedback">Por favor, introduce tu nombre.</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">Apellidos</label>
                                     <input type="text" id="surnameInput"
                                         class="form-control p-3 border-light-subtle shadow-none" required
-                                        placeholder="Apellidos">
+                                        placeholder="Apellidos" aria-label="apellidos">
                                     <div class="invalid-feedback">Por favor, introduce tus apellidos.</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">Email</label>
                                     <input type="email" id="emailInput"
                                         class="form-control p-3 border-light-subtle shadow-none" required
-                                        placeholder="ejemplo@correo.com">
+                                        placeholder="ejemplo@correo.com" aria-label="tu correo">
                                     <div id="emailError" class="invalid-feedback">Introduce un correo válido (ejemplo@correo.com).</div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-semibold">Teléfono de Contacto</label>
                                     <input type="tel" id="phoneInput"
                                         class="form-control p-3 border-light-subtle shadow-none" required
-                                        placeholder="XXX-XXX-XXX" maxlength="9">
+                                        placeholder="XXX-XXX-XXX"  aria-label="numero de telefono" maxlength="9">
                                     <div id="phoneError" class="invalid-feedback">El teléfono debe tener exactamente 9
                                         dígitos.
                                     </div>
@@ -83,7 +83,7 @@
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Fecha de recogida</label>
                                 <input type="date" id="dateInput"
-                                    class="form-control p-3 border-light-subtle shadow-none" required max="2099-12-31">
+                                    class="form-control p-3 border-light-subtle shadow-none" required max="2099-12-31" aria-label="fecha recogida">
                                 <div class="form-text">Mínimo 48h de antelación.</div>
                                 <div id="dateError" class="invalid-feedback">La fecha debe ser válida, necesitamos al
                                     menos dos días.</div>
@@ -92,7 +92,7 @@
                             <div class="mb-4">
                                 <label class="form-label fw-semibold">Detalles del Pedido</label>
                                 <textarea id="detailsInput" class="form-control p-3 border-light-subtle shadow-none"
-                                    rows="5" required placeholder="¿Qué tarta buscas? ¿Alguna alergía?"></textarea>
+                                    rows="5" required placeholder="¿Qué tarta buscas? ¿Alguna alergía?" aria-label="descripcion"></textarea>
                                 <div class="invalid-feedback">Cuéntanos qué necesitas para poder ayudarte. Danos más
                                     detalles.</div>
                             </div>
@@ -122,12 +122,12 @@
 
                     <div class="footer-socials">
                         <a href="https://www.facebook.com/Lama-Pasteler%C3%ADa-panader%C3%ADa-y-bolleria-100054487568378/"
-                            target="_blank">
-                            <i class="fab fa-facebook-f"></i>
+                            target="_blank" aria-label="Visitar nuestra página de Facebook"> <i
+                                class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://www.instagram.com/pastelerialama?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                            target="_blank">
-                            <i class="fab fa-instagram"></i>
+                            target="_blank" aria-label="Visitar nuestro perfil de Instagram"> <i
+                                class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>

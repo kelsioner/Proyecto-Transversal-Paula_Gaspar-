@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ---------- LOGIN ----------
+    //LOGIN 
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ---------- REGISTRO ----------
+    //REGISTRO
     if (registerForm) {
         const regName = document.getElementById("regName");
         const regEmail = document.getElementById("regEmail");

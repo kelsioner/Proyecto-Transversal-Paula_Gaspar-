@@ -43,9 +43,7 @@
     };
 
     // ---------- Roles / URLs ----------
-    // IMPORTANTE: aquí defines cómo detectas trabajador/admin por email.
-    // Si tus correos de trabajador no empiezan por "trabajador@" o "empleado@",
-    // cámbialo aquí.
+    // aquí definimos cómo detectamos al trabajador/admin por email
     const roleFromEmail = (email) => {
         const e = (email || "").toLowerCase().trim();
         if (e.startsWith("admin@")) return "admin";
@@ -55,7 +53,7 @@
 
     const panelUrlByRole = (role) => ROLE_PANEL[role] || LOGIN_URL;
 
-    // ---------- Navbar ----------
+    //  Navbar 
     const updateNavbarAuthLink = () => {
         const link = document.getElementById("navAuthLink");
         if (!link) return;
@@ -70,7 +68,7 @@
         link.href = panelUrlByRole(user.role);
     };
 
-    // ---------- Guard de páginas privadas ----------
+    //  Guard de páginas privadas 
     const enforceRoleGuard = () => {
         const required = document.body?.dataset?.requiredRole;
         if (!required) return;
@@ -99,7 +97,7 @@
         }
     };
 
-    // ---------- Logout ----------
+    //  Logout 
     const bindLogoutButton = () => {
         const btn = document.getElementById("logoutBtn");
         if (!btn) return;
@@ -117,7 +115,7 @@
         panelUrlByRole,
         updateNavbarAuthLink,
 
-        // Helpers extra (por si los usas)
+        // Helpers extra
         getUser,
         clearUser,
         logout: () => { clearUser(); window.location.href = LOGIN_URL; },

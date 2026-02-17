@@ -1,11 +1,10 @@
 /* 1. VARIABLES GLOBALES*/
 :root {
-    --primary-color: #d4a373;
-    --primary-dark: #bc8a5f;
+    --primary-color: #b3875b;
+    --primary-dark: #a3764e;
     --secondary-color: #faedcd;
     --bg-light: #d3b08d;
-    --gold-text: #dfb777;
-    --text-dark: #333333;
+    --text-dark: #1d1c1c;
     --white: #ffffff;
     --bg: #f7f6f4;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -36,7 +35,7 @@ h1, h2, h3, .logo, .font-serif {
     padding: 1rem 0;
 }
 
-/* Logo: Aumentamos especificidad para asegurar color */
+/* Logo: asegurar color */
 a.logo {
     display: flex;
     align-items: center;
@@ -266,7 +265,7 @@ input[type="date"].form-control.is-valid {
 .product-back h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--primary-dark);
+    color: var(--text-dark);
 }
 
 .allergen-info { font-size: 1rem; line-height: 1.4; }
@@ -330,7 +329,7 @@ input[type="date"].form-control.is-valid {
 }
 
 .footer-title {
-    color: var(--gold-text);
+    color: var(--text-dark) ;
     font-size: 0.7rem;
     letter-spacing: 1.5px;
     font-weight: 700;
@@ -369,7 +368,7 @@ input[type="date"].form-control.is-valid {
 }
 
 .footer a:hover {
-    color: var(--gold-text);
+    color: var(--bg-light);
 }
 
 /* Movimiento específico para redes sociales */

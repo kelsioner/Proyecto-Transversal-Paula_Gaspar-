@@ -1,9 +1,7 @@
-/* /pages/trabajador/css/employee.css
+/* /pages/trabajador/css/employee.css*/
 
-*
 /* VARIABLES  */
 :root {
-  /* Usamos variables globales si existen */
   --emp-bg: var(--bg, #f7f6f4);
   --emp-card: var(--white, #ffffff);
   --emp-text: var(--text-dark, #333333);
@@ -39,7 +37,6 @@
   color: var(--emp-text);
 }
 
-/* Titulares un poco más “serif” como tu web */
 .emp-page h2,
 .emp-page h3 {
   font-family: 'Playfair Display', serif;
@@ -218,7 +215,7 @@
   justify-content: flex-end;
 }
 
-/* BADGES (stock/estado) */
+/* STOCK Y ESTADOS */
 .emp-badge {
   display: inline-flex;
   align-items: center;
