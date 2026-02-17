@@ -1,11 +1,7 @@
 /* /pages/trabajador/css/employee.css
-   Estilo integrado con style.css (Pastelería Lama)
-   - Mantiene scoping con .emp-page
-*/
 
-/* =========================
-   1) VARIABLES (toman base de style.css)
-   ========================= */
+*
+/* VARIABLES  */
 :root {
   /* Usamos variables globales si existen */
   --emp-bg: var(--bg, #f7f6f4);
@@ -33,9 +29,7 @@
   --emp-danger: #b42318;
 }
 
-/* =========================
-   2) SCOPED BASE
-   ========================= */
+/* SCOPED BASE */
 .emp-page,
 .emp-page * {
   box-sizing: border-box;
@@ -51,9 +45,7 @@
   font-family: 'Playfair Display', serif;
 }
 
-/* =========================
-   3) TOPBAR / CABECERA
-   ========================= */
+/* CABECERA */
 .emp-topbar {
   display: flex;
   align-items: flex-end;
@@ -82,9 +74,7 @@
   align-items: center;
 }
 
-/* =========================
-   4) CARD CONTENEDOR
-   ========================= */
+/* CARD CONTENEDOR */
 .emp-card {
   background: var(--emp-card);
   border-radius: var(--emp-radius-lg);
@@ -98,9 +88,7 @@
   margin: 0 0 10px;
 }
 
-/* =========================
-   5) BOTONES (estilo Lama)
-   ========================= */
+/* BOTONES */
 .emp-btn {
   border: 1px solid rgba(188, 138, 95, 0.35);
   background-color: transparent;
@@ -157,9 +145,7 @@
   padding: 0.55rem 0;
 }
 
-/* =========================
-   6) TABS (productos / ingredientes)
-   ========================= */
+/* TABS (productos / ingredientes) */
 .emp-tabs {
   display: flex;
   gap: 10px;
@@ -190,9 +176,7 @@
   color: var(--white, #fff);
 }
 
-/* =========================
-   7) TABLAS (suaves, separadas)
-   ========================= */
+/* TABLAS  */
 .emp-table {
   width: 100%;
   border-collapse: separate;
@@ -234,9 +218,7 @@
   justify-content: flex-end;
 }
 
-/* =========================
-   8) BADGES (stock/estado)
-   ========================= */
+/* BADGES (stock/estado) */
 .emp-badge {
   display: inline-flex;
   align-items: center;
@@ -262,9 +244,7 @@
   color: var(--emp-warn);
 }
 
-/* =========================
-   9) INPUTS / TEXTAREA
-   ========================= */
+/* INPUTS / TEXTAREA */
 .emp-input,
 .emp-textarea {
   width: 100%;
@@ -288,9 +268,7 @@
   resize: vertical;
 }
 
-/* =========================
-   10) MODAL (claro, acorde)
-   ========================= */
+/* MODAL */
 .emp-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -328,9 +306,7 @@
   font-size: 1.1rem;
 }
 
-/* =========================
-   11) FICHAJE (botón grande + lista)
-   ========================= */
+/* FICHAJE (botón grande + lista) */
 .emp-big-btn {
   width: 100%;
   padding: 1.1rem 1rem;
@@ -383,9 +359,7 @@
   font-size: 0.9rem;
 }
 
-/* =========================
-   12) RESPONSIVE
-   ========================= */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .emp-card { padding: 16px; }
   .emp-table th { display: none; }
@@ -424,4 +398,54 @@
     justify-content: flex-start;
     margin-top: 8px;
   }
+}
+
+/* css panel trabajador */
+.panel-wrap { padding: 60px 0; }
+.panel-card { border-radius: 18px; }
+.save-hint { font-size: .9rem; }
+
+/* Acciones rápidas (igual que panel-admin) */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.quick-card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.04);
+    box-shadow: var(--shadow-sm);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+.quick-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.quick-ico {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(212,163,115,.16);
+    color: var(--primary-dark);
+    flex: 0 0 auto;
+    font-size: 1.05rem;
+}
+.quick-title { font-weight: 800; }
+.quick-sub { font-size: .9rem; opacity: .75; margin-top: 2px; }
+
+@media (max-width: 992px){
+    .quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 576px){
+    .quick-actions { grid-template-columns: 1fr; }
 }

@@ -21,7 +21,7 @@ body {
     overflow-x: hidden;
 
     min-height: 100vh;       
-    display: flex;           
+    display: flex;
     flex-direction: column;
 }
 
@@ -499,3 +499,10 @@ input[type="date"].form-control.is-valid {
 .product-flip-card.is-flipped .product-card-inner {
     transform: rotateY(180deg);
 }
+
+/* css paginas privacidad, aviso-legal y cookies */
+.legal-wrap { padding: 60px 0; }
+.legal-card { border-radius: 18px; }
+.legal-card h1 { font-family: "Playfair Display", serif; }
+.legal-card h2 { font-size: 1.15rem; margin-top: 1.5rem; }
+.legal-card p, .legal-card li { color: #444; line-height: 1.7; }

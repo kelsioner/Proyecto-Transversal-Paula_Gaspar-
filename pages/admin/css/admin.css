@@ -98,3 +98,53 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* css que había en PANEL-ADMIN */
+.panel-wrap { padding: 60px 0; }
+.panel-card { border-radius: 18px; }
+.save-hint { font-size: .9rem; }
+
+/* Acciones rápidas */
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.quick-card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,.04);
+    box-shadow: var(--shadow-sm);
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition);
+}
+.quick-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+.quick-ico {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(212,163,115,.16);
+    color: var(--primary-dark);
+    flex: 0 0 auto;
+    font-size: 1.05rem;
+}
+.quick-title { font-weight: 800; }
+.quick-sub { font-size: .9rem; opacity: .75; margin-top: 2px; }
+
+@media (max-width: 992px){
+    .quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 576px){
+    .quick-actions { grid-template-columns: 1fr; }
+}

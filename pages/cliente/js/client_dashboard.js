@@ -77,9 +77,9 @@
     };
     const writeCart = (cart) => localStorage.setItem(CART_KEY, JSON.stringify(cart));
 
-    let cart = readCart(); // { [productId]: qty }
+    let cart = readCart(); 
 
-    // --------- Date validation (+2 days) ----------
+    // --------- Validacion de dia (+2 days) ----------
     const setupPickupMinDate = () => {
         const now = new Date();
         now.setHours(0,0,0,0);
@@ -372,7 +372,7 @@
         items: itemsToText(lines),
         itemsDetailed: lines,
         total,
-        amount: total,              // para el dashboard admin (beneficios)
+        amount: total,
         status: "Pendiente",
         notes: (orderNotes?.value || "").trim()
         };
