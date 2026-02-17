@@ -100,7 +100,7 @@ Este proyecto integra conocimientos de los siguientes módulos del ciclo:
 
 🚀 Instalación y Uso
 Clonar el repositorio:
-  git clone https://github.com/kelsioner/Pasteleria-Lama--Paula_Gaspar-.git
+  git clone (https://github.com/kelsioner/Proyecto-Transversal-Paula_Gaspar-)
 
 Ejecutar:
 No requiere instalación de dependencias. Abre el archivo index.html en tu navegador o usa una extensión como Live Server para una mejor experiencia.
