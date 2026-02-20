@@ -448,11 +448,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ==============================
-    // 4) TARJETAS DE PRODUCTO: BOTÓN SEGÚN ROL + FLIP EN MÓVIL
-    // ==============================
-    initProductCardActions();
-    initFlipOnTap();
+        // ==============================
+        // 4) TARJETAS DE PRODUCTO: BOTÓN SEGÚN ROL + FLIP EN MÓVIL
+        // ==============================
+        initProductCardActions();
+        initFlipOnTap();
     });
 
     function initProductCardActions() {
@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!role) {
         btn.textContent = "Inicia sesión para pedir";
         btn.classList.add("product-action-btn--login");
-        btn.href = "/pages/login.html";
+        btn.href = "../pages/login.html";
 
         btn.onclick = () => {
             localStorage.setItem("postLoginRedirect", window.location.href);

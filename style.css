@@ -125,7 +125,7 @@ input[type="date"].form-control.is-valid {
 .hero {
     height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)),
-        url('assests/ilustration.png') center/cover no-repeat;
+        url('assets/ilustration.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

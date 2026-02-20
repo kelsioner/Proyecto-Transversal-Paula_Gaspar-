@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Si no hay sesión -> login
     if (!user) {
-        window.location.href = "/pages/login.html";
+        window.location.href = "../pages/login.html";
         return;
     }
 
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutBtn.addEventListener("click", () => {
         Auth.clearUser();
         Auth.updateNavbarAuthLink?.();
-        window.location.href = "/pages/login.html";
+        window.location.href = "../pages/login.html";
         });
     }
 

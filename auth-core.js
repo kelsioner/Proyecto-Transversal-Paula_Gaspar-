@@ -1,7 +1,7 @@
 // auth-core.js (RAÍZ DEL PROYECTO)
 (() => {
     const STORAGE_KEY = "auth";
-    const LOGIN_URL = "/pages/login.html";
+    const LOGIN_URL = "pages/login.html";
 
     // Paneles por rol
     const ROLE_PANEL = {
