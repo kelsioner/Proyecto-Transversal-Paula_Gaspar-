@@ -5,9 +5,9 @@
 
     // Paneles por rol
     const ROLE_PANEL = {
-        cliente: "/pages/panel-cliente.html",
-        trabajador: "/pages/panel-trabajador.html",
-        admin: "/pages/panel-admin.html",
+        cliente: "../pages/panel-cliente.html",
+        trabajador: "../pages/panel-trabajador.html",
+        admin: "../pages/panel-admin.html",
     };
 
     const safeJSONParse = (str) => {
