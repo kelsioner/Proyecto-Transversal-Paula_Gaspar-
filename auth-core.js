@@ -18,10 +18,16 @@
     // Soporta "Recordarme": localStorage; si no, sessionStorage
     const getUser = () => {
         const fromLocal = safeJSONParse(localStorage.getItem(STORAGE_KEY) || "null");
+
+            console.log("getUser - fromLocal:", fromLocal);
+
         if (fromLocal && typeof fromLocal === "object" && fromLocal.role) return fromLocal;
 
         const fromSession = safeJSONParse(sessionStorage.getItem(STORAGE_KEY) || "null");
-        if (fromSession && typeof fromSession === "object" && fromSession.role) return fromSession;
+
+            console.log("getUser - fromSession:", fromSession);
+
+        if (fromSession && typeof fromSession === "object" && fromSession.role) return fromSession
 
         return null;
     };
