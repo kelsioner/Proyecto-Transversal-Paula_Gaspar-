@@ -32,10 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             namePattern.test(nameInput.value.trim()) &&
             nameInput.value.trim().length > 0;
         nameInput.classList.toggle("is-valid", isValid);
-        nameInput.classList.toggle(
-            "is-invalid",
-            !isValid && nameInput.value !== ""
-        );
+        nameInput.classList.toggle("is-invalid", !isValid && nameInput.value !== "");
         });
     }
 
@@ -47,10 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             surnamePattern.test(surnameInput.value.trim()) &&
             surnameInput.value.trim().length > 0;
         surnameInput.classList.toggle("is-valid", isValid);
-        surnameInput.classList.toggle(
-            "is-invalid",
-            !isValid && surnameInput.value !== ""
-        );
+        surnameInput.classList.toggle("is-invalid", !isValid && surnameInput.value !== "");
         });
     }
 
@@ -60,10 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com|es)$/;
         const isValid = emailPattern.test(emailInput.value.toLowerCase());
         emailInput.classList.toggle("is-valid", isValid);
-        emailInput.classList.toggle(
-            "is-invalid",
-            !isValid && emailInput.value !== ""
-        );
+        emailInput.classList.toggle("is-invalid", !isValid && emailInput.value !== "");
         });
     }
 
@@ -178,8 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dateInput.classList.remove("is-valid");
             if (dateError) {
             dateError.classList.remove("d-none");
-            dateError.textContent =
-                "La fecha debe ser al menos 48 horas después de hoy.";
+            dateError.textContent = "La fecha debe ser al menos 48 horas después de hoy.";
             }
         }
         });
@@ -190,10 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         detailsInput.addEventListener("input", () => {
         const isValid = detailsInput.value.trim().length >= 20;
         detailsInput.classList.toggle("is-valid", isValid);
-        detailsInput.classList.toggle(
-            "is-invalid",
-            !isValid && detailsInput.value !== ""
-        );
+        detailsInput.classList.toggle("is-invalid", !isValid && detailsInput.value !== "");
         });
     }
 
@@ -317,9 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const ok = emailPattern.test(emailValue);
             if (ok) {
             setValid(regEmail);
-            const feedback = regEmail.parentElement?.querySelector(
-                ".invalid-feedback"
-            );
+            const feedback = regEmail.parentElement?.querySelector(".invalid-feedback");
             if (feedback) feedback.textContent = "Email inválido.";
             } else {
             regEmail.classList.toggle("is-invalid", regEmail.value !== "");
@@ -340,17 +325,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const match = regPass.value === regPassConfirm.value;
             match
             ? setValid(regPassConfirm)
-            : setInvalidWithMessage(
-                regPassConfirm,
-                "Las contraseñas no coinciden."
-                );
+            : setInvalidWithMessage(regPassConfirm, "Las contraseñas no coinciden.");
         }
         };
 
         if (regPass) regPass.addEventListener("input", checkPasswords);
         if (regPassConfirm) regPassConfirm.addEventListener("input", checkPasswords);
 
-        registerForm.addEventListener("submit", (e) => {
+        registerForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         if (!window.Auth) return;
@@ -367,10 +349,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const inputs = registerForm.querySelectorAll("input");
+        const registerInputs = registerForm.querySelectorAll("input");
         let formValido = true;
 
-        inputs.forEach((input) => {
+        registerInputs.forEach((input) => {
             if (!input.classList.contains("is-valid")) {
             input.classList.add("is-invalid");
             formValido = false;
@@ -379,23 +361,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!formValido) return;
 
-        Auth.setUser(
-            {
-            name: regName?.value.trim() || "Usuario",
-            email: emailValue,
-            role,
+        try {
+            const res = await fetch("/api/users/register", {
+            method: "POST",
+            body: JSON.stringify({
+                name: regName?.value.trim() || "Usuario",
+                email: emailValue,
+                password: regPass?.value || "",
+            }),
+            headers: {
+                "Content-Type": "application/json",
             },
-            true
-        );
+            });
 
-        Auth.updateNavbarAuthLink();
-        window.location.href = resolvePostLoginRedirectOrPanel(role);
+            if (!res.ok) throw new Error("Error en la respuesta del servidor");
+
+            const data = await res.json();
+
+            if (!data) {
+            alert("¡Registro fallido!");
+            return;
+            }
+        } catch (e) {
+            console.error(e);
+            alert("¡Error al comunicar con el servidor!");
+            return;
+        }
+
+        // Registro correcto -> NO iniciamos sesión automáticamente
+        alert("¡Registro completado! Por favor, inicia sesión.");
+        document.querySelector("#login-tab")?.click();
+        registerForm.reset();
+        registerInputs.forEach((i) => i.classList.remove("is-valid", "is-invalid"));
         });
     }
 
     // 3.2 LOGIN
     if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
+        loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!window.Auth) return;
 
@@ -415,26 +418,58 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const role = Auth.roleFromEmail(emailValue);
-
-        Auth.setUser(
-            {
-            name: role === "admin" ? "Admin" : "Usuario",
-            email: emailValue,
-            role,
-            },
-            !!rememberCheck?.checked
-        );
-
         const btn = loginForm.querySelector('button[type="submit"]');
-        if (btn)
+        const originalBtnHtml = btn ? btn.innerHTML : "";
+
+        if (btn) {
+            btn.disabled = true;
             btn.innerHTML =
             '<span class="spinner-border spinner-border-sm"></span> Entrando...';
+        }
 
-        setTimeout(() => {
+        try {
+            const res = await fetch("/api/users/login", {
+            method: "POST",
+            body: JSON.stringify({
+                email: emailValue,
+                password: passValue,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            });
+
+            if (!res.ok) throw new Error("Error en la respuesta del servidor");
+
+            const data = await res.json();
+
+            if (!data) {
+            alert("¡Login fallido!");
+            return;
+            }
+
+            const role = Auth.roleFromEmail(emailValue);
+
+            Auth.setUser(
+            {
+                name: role === "admin" ? "Admin" : "Usuario",
+                email: emailValue,
+                role,
+            },
+            !!rememberCheck?.checked
+            );
+
             Auth.updateNavbarAuthLink();
             window.location.href = resolvePostLoginRedirectOrPanel(role);
-        }, 600);
+        } catch (e) {
+            console.error(e);
+            alert("¡Error al comunicar con el servidor!");
+        } finally {
+            if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalBtnHtml;
+            }
+        }
         });
     }
 
@@ -448,11 +483,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-        // ==============================
-        // 4) TARJETAS DE PRODUCTO: BOTÓN SEGÚN ROL + FLIP EN MÓVIL
-        // ==============================
-        initProductCardActions();
-        initFlipOnTap();
+    // ==============================
+    // 4) TARJETAS DE PRODUCTO: BOTÓN SEGÚN ROL + FLIP EN MÓVIL
+    // ==============================
+    initProductCardActions();
+    initFlipOnTap();
     });
 
     function initProductCardActions() {
@@ -500,10 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         btn.onclick = () => {
             localStorage.setItem("postLoginRedirect", window.location.href);
-            localStorage.setItem(
-            "postLoginProduct",
-            JSON.stringify({ name, price })
-            );
+            localStorage.setItem("postLoginProduct", JSON.stringify({ name, price }));
         };
         } else if (role === "admin" || role === "trabajador") {
         btn.textContent = "Modificar";

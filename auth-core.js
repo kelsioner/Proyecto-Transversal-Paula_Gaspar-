@@ -1,13 +1,12 @@
 // auth-core.js (RAÍZ DEL PROYECTO)
 (() => {
     const STORAGE_KEY = "auth";
-    const LOGIN_URL = "./login.html";
+    const LOGIN_URL = "/pages/login.html";
 
-    // Paneles por rol
     const ROLE_PANEL = {
-        cliente: "./panel-cliente.html",
-        trabajador: "./pages/panel-trabajador.html",
-        admin: "./pages/panel-admin.html",
+    cliente: "/pages/panel-cliente.html",
+    trabajador: "/pages/panel-trabajador.html",
+    admin: "/pages/panel-admin.html",
     };
 
     const safeJSONParse = (str) => {

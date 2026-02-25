@@ -1,0 +1,16 @@
+# Java / Maven
+servidor/**/target/
+*.log
+
+# Certificados locales
+certs/
+*.crt
+*.key
+
+# Zips
+*.zip
+
+# VS Code / SO
+.vscode/
+.DS_Store
+Thumbs.db
